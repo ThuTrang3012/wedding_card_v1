@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thư Mời Cưới | Anh Tuấn & Thu Hường (Fixed)</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #333;
+        --accent-color: #8b4545;
+        --dark-section-bg: #1e1e1e;
+        --script-font: "Great Vibes", cursive;
+        --content-font: "Lora", serif;
+        --grid-row-height: 140px; /* base row height for album grid */
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--content-font);
+        margin: 0;
+        padding: 0;
+        line-height: 1.65; /* clearer readable height */
+        color: var(--primary-color);
+        background-color: #fff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      html *::-webkit-scrollbar {
+        width: 1px;
+        height: 1px;
+      }
+
+      html *::-webkit-scrollbar-thumb {
+        background: #aaaaaa;
+        border-radius: 6px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .script-font {
+        font-family: var(--script-font);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+        font-weight: 400;
+      }
+
+      .couple-name {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        margin-bottom: 5px;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 2.2em;
+        text-align: center;
+        margin: 40px 0 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 12px;
+      }
+
+      .role {
+        display: block;
+        font-size: 1.05em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--primary-color);
+        letter-spacing: 0.06em;
+      }
+
+      /* HERO */
+      .hero-section {
+        background-image: url("images/PL_02311.jpg");
+        background-position: center;
+        min-height: 100vh; /* slightly shorter on mobile */
+        background-size: cover;
+        /* background-attachment: fixed; removed for mobile performance */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        padding: 40px 0;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      .hero-content {
+        z-index: 10;
+        text-align: center;
+        padding: 12px 18px;
+        max-width: 900px;
+      }
+
+      .date-save {
+        font-size: 1.05em;
+        letter-spacing: 0.28em;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .date-value {
+        font-size: clamp(1.4rem, 4vw, 2.2rem);
+        font-weight: bold;
+        margin-top: 6px;
+      }
+
+      .hero-content p:last-child {
+        font-style: italic;
+        font-size: 0.95em;
+        max-width: 640px;
+        margin: 18px auto 0;
+      }
+
+      /* STORY SECTION */
+      .story-section {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 24px 3% 0px 3%;
+        margin: 0 auto;
+        flex-wrap: nowrap; /* will change on small screens */
+      }
+
+      .story-image {
+        flex: 1 1 320px;
+        padding: 10px;
+        max-width: 480px;
+      }
+
+      .story-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* cover for consistent crop */
+        aspect-ratio: 4 / 5; /* nice portrait ratio */
+        border-radius: 6px;
+        object-position: top;
+      }
+
+      .story-text {
+        flex: 1 1 320px;
+        padding: 8px 20px;
+      }
+
+      .story-text h2 {
+        font-size: 2.1em;
+        margin-bottom: 10px;
+        font-family: var(--script-font);
+        border-bottom: 1px solid #eee;
+        display: inline-block;
+        padding-bottom: 6px;
+      }
+
+      .story-text p {
+        text-align: justify;
+        line-height: 1.8; /* clearer line height as requested */
+      }
+
+      .content-reverse {
+        flex-direction: row-reverse;
+      }
+
+      /* CALENDAR */
+      .calendar-heading {
+        text-align: center;
+        font-size: 1.9em;
+        margin-top: 30px;
+        font-family: var(--script-font);
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+        text-align: center;
+        max-width: 700px;
+        margin: 20px auto;
+        font-size: 1.05em;
+      }
+
+      .month-label {
+        grid-column: 1 / -1;
+      }
+
+      .day-label {
+        font-weight: bold;
+        color: var(--accent-color);
+        padding-bottom: 8px;
+      }
+
+      .date-number {
+        padding: 10px 0;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+
+      .date-highlight {
+        background-color: var(--accent-color);
+        color: white;
+        font-weight: bold;
+        position: relative;
+      }
+
+      .date-highlight::after {
+        content: "♥";
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        font-size: 1.1em;
+        color: var(--accent-color);
+        z-index: 10;
+      }
+
+      .event-detail-summary {
+        text-align: center;
+        max-width: 560px;
+        margin: 26px auto;
+        font-size: 1.05em;
+      }
+
+      .large-date {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        margin: 16px 0;
+        flex-wrap: wrap;
+      }
+
+      .large-date .month,
+      .large-date .year {
+        font-family: var(--script-font);
+        font-size: 1.6em;
+        /* border-right: 2px solid var(--primary-color); */
+        /* padding-right: 16px; */
+      }
+      .large-date .day-name {
+        font-size: 1.6em;
+        /* padding-left: 8px; */
+      }
+
+      .location-info {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* IMAGE BREAK */
+      .image-break-section {
+        background-size: cover;
+        background-position: center 25%;
+        /* background-position-x: center; */
+        /* background-position-y: 50px; */
+        height: 28vh;
+        border-radius: 6px;
+        margin: 20px 0;
+      }
+
+      /* ALBUM */
+      .photo-album-grid {
+        display: grid;
+        /* automatic responsive columns */
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-auto-rows: var(--grid-row-height);
+        gap: 10px;
+        margin: 20px auto;
+        max-width: 1000px;
+      }
+
+      /* keep original markup (img.grid-item) but make it behave like a flex cover thumb */
+      .grid-item {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 6px;
+        transition: transform 0.25s ease;
+        cursor: pointer;
+        object-fit: cover; /* fill and crop */
+        width: 100%;
+        height: 100%;
+        /* performance hints */
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+
+      /* orientation helpers set by JS */
+      .grid-item.portrait {
+        /* portrait images will visually be taller: we'll instruct JS to span more rows */
+        aspect-ratio: 3/4;
+      }
+      .grid-item.landscape {
+        aspect-ratio: 4/3;
+      }
+
+      /* span larger to create variety */
+      .span-2-rows {
+        grid-row: span 2;
+      }
+      .span-2-cols {
+        grid-column: span 2;
+      }
+
+      .grid-item:hover {
+        transform: scale(1.02);
+      }
+
+      /* RSVP */
+      .rsvp-section-wrapper {
+        background-color: #f7f7f7;
+        padding: 10px 0 40px 0;
+      }
+      .rsvp-header-dark {
+        background-color: var(--dark-section-bg);
+        color: white;
+        text-align: center;
+        padding: 18px;
+        margin-bottom: 18px;
+      }
+      .rsvp-header-dark h2 {
+        margin: 0;
+        font-size: 2.8em;
+      }
+      .rsvp-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 12px;
+      }
+      .qr-codes,
+      .rsvp-form-embed {
+        flex: 1 1 300px;
+        min-width: 260px;
+        padding: 10px;
+        margin: 8px;
+      }
+      .google-form-iframe {
+        width: 100%;
+        min-height: 640px;
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+      }
+
+      .qr-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .qr-container img {
+        width: 160px;
+        height: 160px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        object-fit: contain;
+        display: block;
+      }
+
+      /* decorate qr with a pin SVG placed to the left using absolute positioning */
+      .qr-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      .qr-pin-svg {
+        position: absolute;
+        left: -18px;
+        /* top: 50%; */
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        pointer-events: none;
+        filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.06));
+      }
+
+      .final-message {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 18px;
+        font-size: 1.05em;
+        color: var(--primary-color);
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.95);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox-content {
+        max-width: 95%;
+        max-height: 92vh;
+        object-fit: contain;
+        border-radius: 6px;
+      }
+      .close-btn {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+        cursor: pointer;
+        z-index: 10010;
+      }
+
+      /* lightweight spinner shown in center while hi-res loads */
+      .lb-spinner {
+        position: absolute;
+        color: #fff;
+        font-size: 14px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+      .lightbox.open .lb-spinner {
+        display: block;
+      }
+
+      /* FOOTER */
+      .footer-thankyou {
+        background-image: url("images/PL_02530.jpg");
+        background-size: cover;
+        background-position: center 35%;
+        height: 50vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        position: relative;
+      }
+      .footer-thankyou h2 {
+        z-index: 10;
+        color: white;
+        font-family: var(--script-font);
+        font-size: 5vw;
+        padding: 30px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.45);
+      }
+      .footer-thankyou::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .story-section {
+          flex-wrap: wrap;
+        }
+        .story-image,
+        .story-text {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+        .story-image img {
+          aspect-ratio: 3/2;
+          /* max-height: 420px; */
+        }
+        .hero-section {
+          min-height: 100vh;
+          background-attachment: scroll;
+        }
+        .photo-album-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+          grid-auto-rows: calc(var(--grid-row-height) * 0.9);
+        }
+        .qr-container img {
+          width: 140px;
+          height: 140px;
+        }
+        .google-form-iframe {
+          min-height: 520px;
+        }
+        .large-date .day-name {
+          font-size: 1.05rem;
+        }
+        .time-eat {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .couple-name {
+          font-size: clamp(1.8rem, 9vw, 3rem);
+        }
+        .photo-album-grid {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: calc(var(--grid-row-height) * 0.9);
+        }
+        .story-image img {
+          max-height: 320px;
+        }
+        .qr-container img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="hero" class="hero-section" data-aos="fade">
+      <div class="hero-content">
+        <h1 class="couple-name script-font">Anh Tuấn - Thu Hường</h1>
+        <p class="date-save">SAVE OUR DATE</p>
+        <p class="date-value">08.12.2025</p>
+        <p>
+          "Hôn nhân không phải là một điểm đến mà là một cuộc hành trình, nơi
+          hai người cùng nhau xây dựng và phát triển."
+        </p>
+      </div>
+    </section>
+
+    <section id="groom" class="story-section" data-aos="fade-up">
+      <div class="story-image" data-aos="fade-right">
+        <img src="images/PL_02331.jpg" alt="Chú rể Anh Tuấn" />
+      </div>
+      <div class="story-text" data-aos="fade-left">
+        <span class="role">CHÚ RỂ</span>
+        <h2 class="script-font">Đỗ Anh Tuấn</h2>
+        <p>
+          Anh - một chàng trai lén lút từ vùng quê lúa bình dị, thật thà và chất
+          phác. Giữa thế gian vô cùng rộng lớn – Chúc mừng chúng ta đã tìm được
+          nhau. Anh đã không ngừng cố gắng và nỗ lực mỗi ngày, để đến hôm nay có
+          thể vững vàng nắm tay em bước vào hành trình hôn nhân, anh phục em đã
+          là cô dâu của anh. Anh hứa sẽ luôn yêu thương và tôn trọng em mọi ngày
+          suốt đời anh. Anh yêu em ❤️
+        </p>
+      </div>
+    </section>
+
+    <section
+      id="bride"
+      class="story-section content-reverse"
+      data-aos="fade-up"
+    >
+      <div class="story-image" data-aos="fade-left">
+        <img src="images/PL_01934.jpg" alt="Cô dâu Thu Hường" />
+      </div>
+      <div class="story-text" data-aos="fade-right">
+        <span class="role">CÔ DÂU</span>
+        <h2 class="script-font">Nguyễn Thị Thu Hường</h2>
+        <p>
+          Em – một cô gái bình dị, may mắn được anh yêu thương và che chở. Cảm
+          ơn anh vì luôn quan tâm, kiên nhẫn và trân trọng em trong từng điều
+          nhỏ nhặt. Với anh dịu dàng, tốt bụng và xinh đẹp – nhưng em biết,
+          chính tình yêu của anh đã khiến em trẻ nên rằng rõ và hạnh phúc đến
+          vậy. Hôm nay, trong chiếc váy cô dâu trắng, em chỉ muốn nói: Cảm ơn
+          anh đã chọn em – người con gái nhỏ bé luôn muốn yêu anh bằng cả trái
+          tim. ❤️
+        </p>
+      </div>
+    </section>
+
+    <h2 class="calendar-heading script-font">Thân mời</h2>
+    <div class="event-detail-summary">
+      <p>ĐẾN DỰ LỄ CƯỚI CỦA CHÚNG MÌNH</p>
+    </div>
+
+    <section id="event" class="container" data-aos="fade-up">
+      <h2 class="calendar-heading script-font">Tháng 12</h2>
+
+      <div class="calendar-grid">
+        <div class="day-label">T2</div>
+        <div class="day-label">T3</div>
+        <div class="day-label">T4</div>
+        <div class="day-label">T5</div>
+        <div class="day-label">T6</div>
+        <div class="day-label">T7</div>
+        <div class="day-label">CN</div>
+
+        <div class="date-number" style="grid-column: 1 / span 1">1</div>
+        <div class="date-number">2</div>
+        <div class="date-number">3</div>
+        <div class="date-number">4</div>
+        <div class="date-number">5</div>
+        <div class="date-number">6</div>
+        <div class="date-number">7</div>
+        <div class="date-number date-highlight">8</div>
+        <div class="date-number">9</div>
+        <div class="date-number">10</div>
+        <div class="date-number">11</div>
+        <div class="date-number">12</div>
+        <div class="date-number">13</div>
+        <div class="date-number">14</div>
+        <div class="date-number">15</div>
+        <div class="date-number">16</div>
+        <div class="date-number">17</div>
+        <div class="date-number">18</div>
+        <div class="date-number">19</div>
+        <div class="date-number">20</div>
+        <div class="date-number">21</div>
+        <div class="date-number">22</div>
+        <div class="date-number">23</div>
+        <div class="date-number">24</div>
+        <div class="date-number">25</div>
+        <div class="date-number">26</div>
+        <div class="date-number">27</div>
+        <div class="date-number">28</div>
+        <div class="date-number">29</div>
+        <div class="date-number">30</div>
+        <div class="date-number">31</div>
+      </div>
+
+      <div class="event-detail-summary">
+        <p class="time-eat">LỄ THÀNH HÔN ĐƯỢC TỔ CHỨC VÀO LÚC 11 GIỜ 30 PHÚT</p>
+        <div class="large-date">
+          <span class="day-name">THÁNG 12</span>
+          <div
+            style="width: 2px; height: 90px; background-color: #aaaaaa"
+          ></div>
+          <span class="day-name"
+            >THỨ HAI <br />
+            08</span
+          >
+          <div
+            style="width: 2px; height: 90px; background-color: #aaaaaa"
+          ></div>
+          <span class="day-name">NĂM 2025</span>
+        </div>
+        <p>(Tức ngày 18 tháng 10 năm Ất Tỵ)</p>
+
+        <div class="location-info">
+          <strong>TẠI GIA ĐÌNH NHÀ GÁI</strong>
+          <p>Xóm Hoàng, thôn Cao Cương, xã Quảng Oai, TP. Hà Nội</p>
+        </div>
+      </div>
+
+      <div
+        class="image-break-section"
+        style="background-image: url('images/PL_02144.jpg'); height: 30vh"
+      ></div>
+    </section>
+
+    <section id="album" class="container" data-aos="fade-up">
+      <h2 class="section-title script-font">Album hình cưới</h2>
+      <div class="photo-album-grid" id="photoAlbum">
+        <!-- Added loading="lazy" to help render and avoid blocking. Kept original img.grid-item markup. -->
+        <img
+          src="images/PL_01789.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_01789.jpg"
+          data-index="0"
+          data-aos="fade-up"
+          onclick="openLightbox(event,this)"
+          style="object-position: top"
+        />
+
+        <img
+          src="images/PL_02499.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02499.jpg"
+          data-index="8"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          onclick="openLightbox(event,this)"
+        />
+
+        <img
+          src="images/PL_01985.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_01985.jpg"
+          data-index="2"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          onclick="openLightbox(event,this)"
+        />
+
+        <img
+          src="images/PL_02858.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02858.jpg"
+          data-index="3"
+          data-aos="fade-up"
+          onclick="openLightbox(event,this)"
+        />
+        <img
+          src="images/PL_02855.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02855.jpg"
+          data-index="4"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          onclick="openLightbox(event,this)"
+        />
+        <img
+          src="images/PL_02831.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02831.jpg"
+          data-index="5"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          onclick="openLightbox(event,this)"
+        />
+
+        <img
+          src="images/PL_02429.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02429.jpg"
+          data-index="6"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          onclick="openLightbox(event,this)"
+        />
+
+        <img
+          src="images/PL_02366.jpg"
+          alt=""
+          class="grid-item"
+          loading="lazy"
+          data-src-full="images/PL_02366.jpg"
+          data-index="7"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          onclick="openLightbox(event,this)"
+          style="object-position: top"
+        />
+      </div>
+    </section>
+
+    <!-- LIGHTBOX MARKUP (was missing) -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <span class="close-btn" onclick="closeLightbox(); event.stopPropagation()"
+        >×</span
+      >
+      <div class="lb-spinner" id="lbSpinner">Đang tải...</div>
+      <img id="lightbox-img" class="lightbox-content" src="" alt="Preview" />
+    </div>
+
+    <section id="rsvp" class="rsvp-section-wrapper" data-aos="fade">
+      <div class="rsvp-header-dark">
+        <h2 class="script-font">Sổ lưu bút</h2>
+      </div>
+
+      <div class="rsvp-content">
+        <div class="qr-codes">
+          <p style="margin-top: 0; font-weight: bold">Mã QR dẫn đến địa điểm</p>
+
+          <div class="qr-item">
+            <div class="qr-container">
+              <!-- qr-wrapper holds pin SVG + QR image so it visually marks location -->
+              <div class="qr-wrapper">
+                <!-- pin svg (location icon) -->
+                <svg class="qr-pin-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="#111"
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                  />
+                </svg>
+                <img src="images/qr-gai.png" alt="QR Code Nhà Gái" />
+              </div>
+            </div>
+            <span class="qr-location">ĐỊA CHỈ NHÀ GÁI</span>
+          </div>
+
+          <div class="qr-item">
+            <div class="qr-container">
+              <div class="qr-wrapper">
+                <svg class="qr-pin-svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="#111"
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                  />
+                </svg>
+                <img src="images/qr-trai.png" alt="QR Code Nhà Trai" />
+              </div>
+            </div>
+            <span class="qr-location">ĐỊA CHỈ NHÀ TRAI</span>
+          </div>
+        </div>
+
+        <div class="rsvp-form-embed">
+          <h3
+            style="
+              font-family: var(--content-font);
+              font-weight: 700;
+              text-align: center;
+            "
+          >
+            Xác nhận tham dự
+          </h3>
+          <!-- Example embedded Google Form. Replace the src with your real form's embed link. -->
+          <iframe
+            src="https://fluidforms.co/embed/form?id=691c3666f994498f9d4a00bb"
+            width="100%"
+            height="400px"
+            frameborder="0"
+          ></iframe>
+        </div>
+
+        <p class="final-message">
+          Cảm ơn bạn rất nhiều vì đã gửi những lời chúc mừng tốt đẹp nhất đến
+          đám cưới của tụi mình.
+        </p>
+      </div>
+    </section>
+
+    <footer
+      class="footer-thankyou"
+      style="background-image: url('images/PL_02530.jpg')"
+    >
+      <h2 class="script-font">Thanks you!</h2>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 900, once: true });
+
+      /* LIGHTBOX functions - improved for snappy open + async image load to avoid lag */
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lbSpinner = document.getElementById("lbSpinner");
+
+      /**
+       * openLightbox(evt, el)
+       * - opens lightbox immediately (no blocking) and preloads the full image asynchronously
+       * - uses data-src-full if present (high-res), otherwise falls back to el.src
+       */
+      function openLightbox(evt, el) {
+        if (evt && evt.stopPropagation) evt.stopPropagation();
+
+        // show overlay immediately
+        lightbox.classList.add("open");
+        lbSpinner.style.display = "block";
+        lightboxImg.style.opacity = 0;
+        document.body.style.overflow = "hidden";
+
+        // choose best src: data-src-full (if you host a hi-res path) else img.src
+        const hiRes = el.getAttribute("data-src-full") || el.src;
+
+        // preload high-res asynchronously to avoid blocking paint
+        const preload = new Image();
+        preload.onload = function () {
+          // swap image when loaded
+          lightboxImg.src = this.src;
+          lbSpinner.style.display = "none";
+          // small delay to ensure image is painted
+          requestAnimationFrame(() => {
+            lightboxImg.style.opacity = 1;
+          });
+        };
+        preload.onerror = function () {
+          // fallback: still show whatever the thumbnail src is
+          lightboxImg.src = el.src;
+          lbSpinner.style.display = "none";
+          lightboxImg.style.opacity = 1;
+        };
+        // start loading
+        preload.src = hiRes;
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightboxImg.src = "";
+        lbSpinner.style.display = "none";
+        document.body.style.overflow = "";
+      }
+
+      // ESC key closes lightbox
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeLightbox();
+      });
+
+      // Prevent click on image from closing (user can click overlay to close)
+      document
+        .getElementById("lightbox-img")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
+
+      /* Album layout improvements
+         - auto-detect image orientation and add classes
+         - compute grid-row spans so mixed portrait/landscape create a balanced masonry-like layout
+      */
+      function prepareAlbum() {
+        const album = document.getElementById("photoAlbum");
+        if (!album) return;
+        const imgs = Array.from(album.querySelectorAll(".grid-item"));
+
+        function applySizing(img, i) {
+          if (!img.naturalWidth || !img.naturalHeight) return;
+          // mark orientation class (keeps original code idea)
+          if (img.naturalWidth > img.naturalHeight) {
+            img.classList.add("landscape");
+          } else {
+            img.classList.add("portrait");
+          }
+
+          // compute row span based on aspect ratio:
+          // taller images (portrait) get more rows, wide images fewer
+          const ratio = img.naturalHeight / img.naturalWidth;
+          let span = Math.round(ratio * 1.5); // tuning factor
+          if (span < 1) span = 1;
+          if (span > 4) span = 4;
+          // apply span directly to the grid item (since img is grid child)
+          img.style.gridRowEnd = "span " + span;
+
+          // maintain some variety but not deterministic large jumps
+          if (i % 7 === 0) img.classList.add("span-2-cols");
+          if (i % 5 === 0) img.classList.add("span-2-rows");
+        }
+
+        imgs.forEach((img, i) => {
+          if (img.complete && img.naturalWidth && img.naturalHeight) {
+            applySizing(img, i);
+          } else {
+            img.addEventListener("load", function () {
+              applySizing(img, i);
+            });
+          }
+        });
+      }
+
+      // Run after DOM and when images load (images might be cached)
+      window.addEventListener("load", function () {
+        prepareAlbum();
+        // minor observe to reflow if later images change size (e.g., responsive)
+        setTimeout(prepareAlbum, 500);
+      });
+
+      // Accessibility: make images keyboard focusable and openable via Enter/Space
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".grid-item").forEach((el) => {
+          el.setAttribute("tabindex", "0");
+          el.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              // keep consistent with click behaviour
+              openLightbox(e, el);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
