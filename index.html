@@ -163,6 +163,16 @@
         object-position: top;
       }
 
+      .story-image-bride img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* cover for consistent crop */
+        aspect-ratio: 4 / 5; /* nice portrait ratio */
+        border-radius: 6px;
+        object-position: top;
+      }
+
       .story-text {
         flex: 1 1 320px;
         padding: 8px 20px;
@@ -499,7 +509,11 @@
           max-width: 100%;
         }
         .story-image img {
-          aspect-ratio: 3/2;
+          /* aspect-ratio: 3/2; */
+          /* max-height: 420px; */
+        }
+        .story-image-bride img {
+          aspect-ratio: 4/5;
           /* max-height: 420px; */
         }
         .hero-section {
@@ -521,7 +535,7 @@
           font-size: 1.05rem;
         }
         .time-eat {
-          font-size: 1.2rem;
+          /* font-size: 1.2rem; */
         }
       }
 
@@ -564,14 +578,6 @@
       <div class="story-text" data-aos="fade-left">
         <span class="role">CHÚ RỂ</span>
         <h2 class="script-font">Đỗ Anh Tuấn</h2>
-        <p>
-          Anh - một chàng trai lén lút từ vùng quê lúa bình dị, thật thà và chất
-          phác. Giữa thế gian vô cùng rộng lớn – Chúc mừng chúng ta đã tìm được
-          nhau. Anh đã không ngừng cố gắng và nỗ lực mỗi ngày, để đến hôm nay có
-          thể vững vàng nắm tay em bước vào hành trình hôn nhân, anh phục em đã
-          là cô dâu của anh. Anh hứa sẽ luôn yêu thương và tôn trọng em mọi ngày
-          suốt đời anh. Anh yêu em ❤️
-        </p>
       </div>
     </section>
 
@@ -580,21 +586,13 @@
       class="story-section content-reverse"
       data-aos="fade-up"
     >
-      <div class="story-image" data-aos="fade-left">
+      <div class="story-image-bride" data-aos="fade-left">
         <img src="images/PL_01934.jpg" alt="Cô dâu Thu Hường" />
       </div>
       <div class="story-text" data-aos="fade-right">
         <span class="role">CÔ DÂU</span>
         <h2 class="script-font">Nguyễn Thị Thu Hường</h2>
-        <p>
-          Em – một cô gái bình dị, may mắn được anh yêu thương và che chở. Cảm
-          ơn anh vì luôn quan tâm, kiên nhẫn và trân trọng em trong từng điều
-          nhỏ nhặt. Với anh dịu dàng, tốt bụng và xinh đẹp – nhưng em biết,
-          chính tình yêu của anh đã khiến em trẻ nên rằng rõ và hạnh phúc đến
-          vậy. Hôm nay, trong chiếc váy cô dâu trắng, em chỉ muốn nói: Cảm ơn
-          anh đã chọn em – người con gái nhỏ bé luôn muốn yêu anh bằng cả trái
-          tim. ❤️
-        </p>
+        <p style="width: 65vw"></p>
       </div>
     </section>
 
@@ -649,7 +647,7 @@
       </div>
 
       <div class="event-detail-summary">
-        <p class="time-eat">LỄ THÀNH HÔN ĐƯỢC TỔ CHỨC VÀO LÚC 11 GIỜ 30 PHÚT</p>
+        <p class="time-eat">LỄ VU QUY ĐƯỢC TỔ CHỨC VÀO LÚC 9 GIỜ</p>
         <div class="large-date">
           <span class="day-name">THÁNG 12</span>
           <div
@@ -668,7 +666,7 @@
 
         <div class="location-info">
           <strong>TẠI GIA ĐÌNH NHÀ GÁI</strong>
-          <p>Xóm Hoàng, thôn Cao Cương, xã Quảng Oai, TP. Hà Nội</p>
+          <p>Xóm Hoàng - thôn Cao Cương - xã Quảng Oai - TP Hà Nội</p>
         </div>
       </div>
 
@@ -695,11 +693,11 @@
         />
 
         <img
-          src="images/PL_02499.jpg"
+          src="images/PL_02492.png"
           alt=""
           class="grid-item"
           loading="lazy"
-          data-src-full="images/PL_02499.jpg"
+          data-src-full="images/PL_02492.png"
           data-index="8"
           data-aos="fade-up"
           data-aos-delay="400"
@@ -796,7 +794,7 @@
         <div class="qr-codes">
           <p style="margin-top: 0; font-weight: bold">Mã QR dẫn đến địa điểm</p>
 
-          <div class="qr-item">
+          <div class="qr-item" style="display: flex">
             <div class="qr-container">
               <!-- qr-wrapper holds pin SVG + QR image so it visually marks location -->
               <div class="qr-wrapper">
@@ -810,10 +808,19 @@
                 <img src="images/qr-gai.png" alt="QR Code Nhà Gái" />
               </div>
             </div>
-            <span class="qr-location">ĐỊA CHỈ NHÀ GÁI</span>
+            <span
+              class="qr-location"
+              style="
+                margin-left: 10px;
+                display: flex;
+                flex-direction: column-reverse;
+              "
+              >ĐỊA CHỈ NHÀ GÁI <br />
+              Xóm Hoàng - thôn Cao Cương - xã Quảng Oai - TP Hà Nội</span
+            >
           </div>
 
-          <div class="qr-item">
+          <div class="qr-item" style="display: flex; margin-top: 30px">
             <div class="qr-container">
               <div class="qr-wrapper">
                 <svg class="qr-pin-svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -825,7 +832,17 @@
                 <img src="images/qr-trai.png" alt="QR Code Nhà Trai" />
               </div>
             </div>
-            <span class="qr-location">ĐỊA CHỈ NHÀ TRAI</span>
+            <span
+              class="qr-location"
+              style="
+                margin-left: 10px;
+                display: flex;
+                flex-direction: column-reverse;
+              "
+              >ĐỊA CHỈ NHÀ TRAI <br />
+              Ngõ 6 - đường Cổng Làng - xóm 8 - thôn Thanh Chiểu - xã Cổ Đô - TP
+              Hà Nội</span
+            >
           </div>
         </div>
 
